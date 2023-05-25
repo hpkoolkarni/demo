@@ -1,0 +1,272 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Table Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* imp */
+      .container {
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        width: 200px;
+        padding: 5px;
+      }
+
+      button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        width: 300px;
+        background-color: aqua;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label for="input1"
+        >Enter values for Table 1 (rows#columns#starting value):</label
+      >
+      <input type="text" id="input1" />
+
+      <label for="input2"
+        >Enter values for Table 2 (rows#columns#starting value):</label
+      >
+      <input type="text" id="input2" />
+
+      <button onclick="generateTables()">Generate Tables</button>
+
+      <table id="table1"></table>
+      <table id="table2"></table>
+      <table id="table3"></table>
+    </div>
+
+    <script>
+      function generateTables() {
+        var input1 = document.getElementById("input1").value;
+        var input2 = document.getElementById("input2").value;
+        var table1 = document.getElementById("table1");
+        var table2 = document.getElementById("table2");
+
+        //   input1 = 3#3#3 -> 3,3,2 (array)
+
+        var values1 = input1.split("#");
+        var rows1 = parseInt(values1[0]);
+        var columns1 = parseInt(values1[1]);
+        var startingValue1 = parseInt(values1[2]);
+
+        var values2 = input2.split("#");
+        var rows2 = parseInt(values2[0]);
+        var columns2 = parseInt(values2[1]);
+        var startingValue2 = parseInt(values2[2]);
+
+        table1.innerHTML = "";
+        table2.innerHTML = "";
+
+        //   for table 1
+        for (var i = 0; i < rows1; i++) {
+          var row = document.createElement("tr");
+          for (var j = 0; j < columns1; j++) {
+            var cell = document.createElement("td");
+            var columnValue = startingValue1 + j;
+            cell.textContent = columnValue * (i + 1);
+            row.appendChild(cell);
+          }
+          table1.appendChild(row);
+        }
+
+        //   for table2
+        for (var i = 0; i < rows2; i++) {
+          var row = document.createElement("tr");
+          for (var j = 0; j < columns2; j++) {
+            var cell = document.createElement("td");
+            var columnValue = startingValue2 + j;
+            cell.textContent = columnValue * (i + 1);
+            row.appendChild(cell);
+          }
+          table2.appendChild(row);
+        }
+
+        //   for table3
+        if (rows1 == rows2 && columns1 == columns2) {
+          var table3 = document.getElementById("table3");
+          table3.innerHTML = "";
+
+          for (var i = 0; i < rows1; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j < columns1; j++) {
+              var cell = document.createElement("td");
+              var value1 = parseInt(table1.rows[i].cells[j].textContent);
+              var value2 = parseInt(table2.rows[i].cells[j].textContent);
+
+              if (value1 === value2) {
+                cell.textContent = value1;
+              } else {
+                cell.textContent = value1 * value2;
+              }
+              row.appendChild(cell);
+            }
+            table3.appendChild(row);
+          }
+        }
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>statement-6</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* imp */
+      .container {
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        width: 200px;
+        padding: 5px;
+      }
+
+      button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        width: 300px;
+        background-color: aqua;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label for="input1">Enter input-1</label>
+      <input type="text" name="Input1" id="input1" /> <br />
+      <label for="input2">Enter input-2</label>
+      <input type="text" name="Input2" id="input2" /> <br />
+      <button onclick="calculate()">Create Output</button>
+      <table id="table1"></table>
+      <table id="table2"></table>
+      <table id="table3"></table>
+    </div>
+    <script>
+      function calculate() {
+        var input1 = document.getElementById("input1").value;
+        var input2 = document.getElementById("input2").value;
+        var table1 = document.getElementById("table1");
+        var table2 = document.getElementById("table2");
+
+        var values1 = input1.split("#");
+        var row1 = parseInt(values1[0]);
+        var col1 = parseInt(values1[1]);
+        var start1 = parseInt(values1[2]);
+
+        var values2 = input2.split("#");
+        var row2 = parseInt(values2[0]);
+        var col2 = parseInt(values2[1]);
+        var start2 = parseInt(values2[2]);
+
+        table1.innerHTML = "";
+        table2.innerHTML = "";
+
+        for (var i = 0; i < row1; i++) {
+          var row = document.createElement("tr");
+          for (var j = 0; j < col1; j++) {
+            var cell = document.createElement("td");
+            var columnValue = start1 + j;
+            cell.textContent = columnValue * (i + 1);
+            row.appendChild(cell);
+          }
+          table1.appendChild(row);
+        }
+        for (var i = 0; i < row2; i++) {
+          var row = document.createElement("tr");
+          for (var j = 0; j < col2; j++) {
+            var cell = document.createElement("td");
+            var columnValue = start2 + j;
+            cell.textContent = columnValue * (i + 1);
+            row.appendChild(cell);
+          }
+          table2.appendChild(row);
+        }
+
+        if (row1 == row2 && col1 == col2) {
+          var table3 = document.getElementById("table3");
+          table3.innerHTML = "";
+          for (var i = 0; i < row1; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j < col1; j++) {
+              var cell = document.createElement("td");
+              var val1 = parseInt(table1.rows[i].cells[j].textContent);
+              var val2 = parseInt(table2.rows[i].cells[j].textContent);
+              if (val1 === val2) {
+                cell.textContent = val1;
+              } else {
+                cell.textContent = val1 * val2;
+              }
+              row.appendChild(cell);
+            }
+            table3.appendChild(row);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
